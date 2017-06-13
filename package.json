@@ -1,0 +1,36 @@
+{
+  "name": "sasdn-sample",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agreatfool/SASDN-Sample.git"
+  },
+  "author": "Jonathan Dai",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/agreatfool/SASDN-Sample/issues"
+  },
+  "homepage": "https://github.com/agreatfool/SASDN-Sample#readme",
+  "dependencies": {
+    "sasdn": "git+https://git@github.com:agreatfool/SASDN.git#design"
+  },
+  "devDependencies": {
+    "@types/google-protobuf": "^3.2.5",
+    "@types/handlebars": "^4.0.32",
+    "@types/node": "^7.0.22",
+    "grpc-tsd": "^1.0.8",
+    "grpc_tools_node_protoc_ts": "^1.0.10",
+    "gulp": "^3.9.1",
+    "gulp-copy": "^1.0.0",
+    "gulp-shell": "^0.6.3",
+    "gulp-typescript": "^3.1.7",
+    "merge2": "^1.0.3",
+    "protobufjs": "^6.7.3",
+    "typescript": "^2.3.4"
+  }
+}
