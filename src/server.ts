@@ -1,7 +1,7 @@
 import {Application} from "sasdn";
 import {registerServices} from "./services/register";
 
-const debug = require('debug')('SASDN:application');
+const debug = require('debug')('SASDN:Application');
 const app = new Application();
 
 app.use(async function (ctx, next) {
