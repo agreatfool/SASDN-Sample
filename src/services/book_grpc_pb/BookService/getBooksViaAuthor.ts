@@ -1,11 +1,11 @@
 import {ServerWritableStream} from "grpc";
 import {Context, Middleware, MiddlewareNext} from "sasdn";
-import {Book, GetBookViaAuthor} from "../../proto/book_pb";
+import {GetBookViaAuthor, Book} from "../../../proto/book_pb";
 
 export const getBooksViaAuthorHandler: Middleware = async (ctx: Context, next: MiddlewareNext) => {
     let call: ServerWritableStream = ctx.call as ServerWritableStream;
-
     let request = call.request as GetBookViaAuthor;
+
     console.log('getBooksViaAuthor request:', request.toObject());
     for (let i = 1; i <= 10; i++) {
         let reply = new Book();

@@ -1,6 +1,6 @@
-import {RpcImplCallback, ServerReadableStream} from "grpc";
+import {ServerReadableStream, RpcImplCallback} from "grpc";
 import {Context, Middleware, MiddlewareNext} from "sasdn";
-import {Book, GetBookRequest} from "../../proto/book_pb";
+import {GetBookRequest, Book} from "../../../proto/book_pb";
 
 export const getGreatestBookHandler: Middleware = async (ctx: Context, next: MiddlewareNext) => {
     let call: ServerReadableStream = ctx.call as ServerReadableStream;
