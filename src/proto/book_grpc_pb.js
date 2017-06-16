@@ -3,6 +3,7 @@
 'use strict';
 var grpc = require('grpc');
 var book_pb = require('./book_pb.js');
+var google_api_annotations_pb = require('./google/api/annotations_pb.js');
 
 function serialize_com_book_Book(arg) {
   if (!(arg instanceof book_pb.Book)) {
@@ -13,6 +14,17 @@ function serialize_com_book_Book(arg) {
 
 function deserialize_com_book_Book(buffer_arg) {
   return book_pb.Book.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_com_book_EchoMessage(arg) {
+  if (!(arg instanceof book_pb.EchoMessage)) {
+    throw new Error('Expected argument of type com.book.EchoMessage');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_com_book_EchoMessage(buffer_arg) {
+  return book_pb.EchoMessage.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_com_book_GetBookRequest(arg) {
@@ -101,3 +113,18 @@ var TestServiceService = exports.TestServiceService = {
 };
 
 exports.TestServiceClient = grpc.makeGenericClientConstructor(TestServiceService);
+var EchoServiceService = exports.EchoServiceService = {
+  echo: {
+    path: '/com.book.EchoService/Echo',
+    requestStream: false,
+    responseStream: false,
+    requestType: book_pb.EchoMessage,
+    responseType: book_pb.EchoMessage,
+    requestSerialize: serialize_com_book_EchoMessage,
+    requestDeserialize: deserialize_com_book_EchoMessage,
+    responseSerialize: serialize_com_book_EchoMessage,
+    responseDeserialize: deserialize_com_book_EchoMessage,
+  },
+};
+
+exports.EchoServiceClient = grpc.makeGenericClientConstructor(EchoServiceService);

@@ -5,7 +5,7 @@ const shell = require('gulp-shell');
 const copy = require('gulp-copy');
 
 const tsProject = ts.createProject('tsconfig.json', {
-  declaration: true
+  // declaration: true
 });
 
 gulp.task('protoc', function () {

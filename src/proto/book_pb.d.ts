@@ -101,6 +101,27 @@ export namespace BookStore {
     }
 }
 
+export class EchoMessage extends jspb.Message { 
+    getValue(): string;
+    setValue(value: string): void;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): EchoMessage.AsObject;
+    static toObject(includeInstance: boolean, msg: EchoMessage): EchoMessage.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: EchoMessage, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): EchoMessage;
+    static deserializeBinaryFromReader(message: EchoMessage, reader: jspb.BinaryReader): EchoMessage;
+}
+
+export namespace EchoMessage {
+    export type AsObject = {
+        value: string,
+    }
+}
+
 export enum EnumSample {
     UNKNOWN = 0,
     STARTED = 1,

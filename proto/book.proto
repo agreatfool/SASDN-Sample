@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+import "google/api/annotations.proto";
+
 package com.book;
 
 message Book {
@@ -39,15 +41,15 @@ enum EnumSample {
     RUNNING = 1;
 }
 
-//message EchoMessage {
-//    string value = 1;
-//}
-//
-//service EchoService {
-//    rpc Echo(EchoMessage) returns (EchoMessage) {
-//        option (google.api.http) = {
-//            post: "/v1/echo"
-//            body: "*"
-//        };
-//    }
-//}
+message EchoMessage {
+    string value = 1;
+}
+
+service EchoService {
+    rpc Echo(EchoMessage) returns (EchoMessage) {
+        option (google.api.http) = {
+            post: "/v1/echo"
+            body: "*"
+        };
+    }
+}

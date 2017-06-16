@@ -86,3 +86,25 @@ export class TestServiceClient extends grpc.Client {
     constructor(address: string, credentials: any, options?: grpc.IClientOptions);
     test(request: book_pb.GetBookRequest, callback: (error: Error | null, response: book_pb.Book) => void): grpc.ClientUnaryCall;
 }
+
+interface IEchoServiceService extends grpc.IMethodsMap {
+    echo: IEcho;
+}
+
+interface IEcho {
+    path: string; // "/com.book.EchoService/Echo"
+    requestStream: boolean; // false
+    responseStream: boolean; // false
+    requestType: book_pb.EchoMessage,
+    responseType: book_pb.EchoMessage,
+    requestSerialize: (arg: book_pb.EchoMessage) => Buffer;
+    requestDeserialize: (buffer: Uint8Array) => book_pb.EchoMessage;
+    responseSerialize: (arg: book_pb.EchoMessage) => Buffer;
+    responseDeserialize: (buffer: Uint8Array) => book_pb.EchoMessage;
+}
+
+export const EchoServiceService: IEchoServiceService;
+export class EchoServiceClient extends grpc.Client {
+    constructor(address: string, credentials: any, options?: grpc.IClientOptions);
+    echo(request: book_pb.EchoMessage, callback: (error: Error | null, response: book_pb.EchoMessage) => void): grpc.ClientUnaryCall;
+}
