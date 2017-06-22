@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/agreatfool/SASDN-Sample#readme",
   "dependencies": {
-    "sasdn": "0.0.6"
+    "sasdn": "0.0.10"
   },
   "devDependencies": {
     "@types/google-protobuf": "^3.2.5",
