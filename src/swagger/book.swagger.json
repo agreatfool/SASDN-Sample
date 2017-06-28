@@ -1,0 +1,185 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "book.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v1/getBook": {
+      "post": {
+        "operationId": "GetBookApi",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/bookBook"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/bookGetBookRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BookApiService"
+        ]
+      }
+    },
+    "/v1/getBooksViaAuthor": {
+      "post": {
+        "operationId": "GetBooksViaAuthorApi",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/bookBookMap"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/bookGetBookViaAuthorRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BookApiService"
+        ]
+      }
+    },
+    "/v1/updateBook/{isbn}": {
+      "post": {
+        "operationId": "UpdateBooksApi",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/bookBook"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "isbn",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/bookUpdateBookRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BookApiService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "bookBook": {
+      "type": "object",
+      "properties": {
+        "isbn": {
+          "type": "string",
+          "format": "int64"
+        },
+        "title": {
+          "type": "string"
+        },
+        "author": {
+          "type": "string"
+        },
+        "category": {
+          "$ref": "#/definitions/bookBookCategory"
+        }
+      }
+    },
+    "bookBookCategory": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "isParent": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "categoryId": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "int64"
+          }
+        }
+      }
+    },
+    "bookBookMap": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/bookBook"
+          }
+        }
+      }
+    },
+    "bookGetBookRequest": {
+      "type": "object",
+      "properties": {
+        "isbn": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "bookGetBookViaAuthorRequest": {
+      "type": "object",
+      "properties": {
+        "author": {
+          "type": "string"
+        }
+      }
+    },
+    "bookUpdateBookRequest": {
+      "type": "object",
+      "properties": {
+        "isbn": {
+          "type": "string"
+        },
+        "book": {
+          "$ref": "#/definitions/bookBook"
+        }
+      }
+    }
+  }
+}
