@@ -114,8 +114,32 @@
         "author": {
           "type": "string"
         },
-        "category": {
+        "mainCategory": {
           "$ref": "#/definitions/bookBookCategory"
+        },
+        "categoryList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/bookBookCategory"
+          }
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "mapBook": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/bookBook"
+          }
+        },
+        "mapName": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
         }
       }
     },
@@ -132,19 +156,16 @@
         "isParent": {
           "type": "boolean",
           "format": "boolean"
-        },
-        "categoryId": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "format": "int64"
-          }
         }
       }
     },
     "bookBookMap": {
       "type": "object",
       "properties": {
+        "count": {
+          "type": "string",
+          "format": "int64"
+        },
         "list": {
           "type": "array",
           "items": {

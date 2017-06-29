@@ -1,12 +1,9 @@
-"use strict";
-
-import {GatewayApiBase, GatewayContext, MiddlewareNext} from 'sasdn';
-import {BookMap} from "../../proto/book_pb";
+// import {GatewayApiBase, GatewayContext, MiddlewareNext} from "sasdn";
+import {GatewayApiBase, GatewayContext, MiddlewareNext} from '../../../../SASDN/index';
+import {BookMap, GetBookViaAuthorRequest} from "../../proto/book_pb";
 
 interface RequestParams {
-    body: {
-        author?: string,
-    },
+    body: GetBookViaAuthorRequest.AsObject
 }
 
 class PostGetBooksViaAuthorApi extends GatewayApiBase {

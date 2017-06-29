@@ -1,24 +1,10 @@
-"use strict";
-
-import {GatewayApiBase, GatewayContext, MiddlewareNext} from 'sasdn';
-import {Book} from "../../proto/book_pb";
+// import {GatewayApiBase, GatewayContext, MiddlewareNext} from "sasdn";
+import {GatewayApiBase, GatewayContext, MiddlewareNext} from '../../../../SASDN/index';
+import {Book, UpdateBookRequest} from "../../proto/book_pb";
 
 interface RequestParams {
-    isbn: string,
-    body: {
-        isbn?: string,
-        book?: {
-            isbn?: string,
-            title?: string,
-            author?: string,
-            category?: {
-                id?: string,
-                name?: string,
-                isParent?: boolean,
-                categoryId?: Array<any>,
-            },
-        },
-    },
+    isbn: string;
+    body: UpdateBookRequest.AsObject
 }
 
 class PostUpdateBooksApi extends GatewayApiBase {
@@ -56,7 +42,7 @@ class PostUpdateBooksApi extends GatewayApiBase {
                                 type: 'string',
                                 required: false,
                             },
-                            category: {
+                            mainCategory: {
                                 type: 'object',
                                 required: false,
                                 schema: {
@@ -72,11 +58,23 @@ class PostUpdateBooksApi extends GatewayApiBase {
                                         type: 'boolean',
                                         required: false,
                                     },
-                                    categoryId: {
-                                        type: 'array',
-                                        required: false,
-                                    },
                                 },
+                            },
+                            categoryList: {
+                                type: 'array',
+                                required: false,
+                            },
+                            tags: {
+                                type: 'array',
+                                required: false,
+                            },
+                            mapBook: {
+                                type: 'array',
+                                required: false,
+                            },
+                            mapName: {
+                                type: 'array',
+                                required: false,
                             },
                         },
                     },
