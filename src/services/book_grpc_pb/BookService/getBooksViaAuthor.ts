@@ -1,8 +1,8 @@
 import {ServerWritableStream} from "grpc";
-import {Context, Middleware, MiddlewareNext} from "sasdn";
+import {RpcContext, Middleware, MiddlewareNext} from "sasdn";
 import {GetBookViaAuthor, Book} from "../../../proto/book_pb";
 
-export const getBooksViaAuthorHandler: Middleware = async (ctx: Context, next: MiddlewareNext) => {
+export const getBooksViaAuthorHandler: Middleware = async (ctx: RpcContext, next: MiddlewareNext) => {
     let call: ServerWritableStream = ctx.call as ServerWritableStream;
     let request = call.request as GetBookViaAuthor;
 

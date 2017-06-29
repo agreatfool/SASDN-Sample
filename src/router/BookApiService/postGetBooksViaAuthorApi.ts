@@ -1,5 +1,4 @@
-// import {GatewayApiBase, GatewayContext, MiddlewareNext} from "sasdn";
-import {GatewayApiBase, GatewayContext, MiddlewareNext} from '../../../../SASDN/index';
+import {GatewayApiBase, GatewayContext, MiddlewareNext} from "sasdn";
 import {BookMap, GetBookViaAuthorRequest} from "../../proto/book_pb";
 
 interface RequestParams {
