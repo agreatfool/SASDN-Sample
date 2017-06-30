@@ -1,10 +1,9 @@
 ///<reference path="../../node_modules/grpc-tsd/src/grpc.d.ts"/>
 import {IServerCall, RpcImplCallback} from "grpc";
-import {Application, WrappedHandler} from "sasdn";
+import {RpcApplication, WrappedHandler} from "sasdn";
 
 import {
     BookServiceService,
-    TestServiceService,
 } from "../proto/book_grpc_pb";
 
 
@@ -13,9 +12,7 @@ import {getBooksViaAuthorHandler} from "./book_grpc_pb/BookService/getBooksViaAu
 import {getGreatestBookHandler} from "./book_grpc_pb/BookService/getGreatestBook";
 import {getBooksHandler} from "./book_grpc_pb/BookService/getBooks";
 
-import {testHandler} from "./book_grpc_pb/TestService/test";
-
-export const registerServices = function (app: Application) {
+export const registerServices = function (app: RpcApplication) {
 
     app.server.addService(BookServiceService, {
         getBook: async (call: IServerCall, callback: RpcImplCallback) => {
@@ -35,12 +32,4 @@ export const registerServices = function (app: Application) {
             wrappedHandler(call).then(_ => _);
         },
     });
-
-    app.server.addService(TestServiceService, {
-        test: async (call: IServerCall, callback: RpcImplCallback) => {
-            let wrappedHandler: WrappedHandler = app.wrapGrpcHandler(testHandler);
-            wrappedHandler(call, callback).then(_ => _);
-        },
-    });
-
 };

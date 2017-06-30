@@ -1,8 +1,8 @@
-import {Application} from "sasdn";
+import {RpcApplication} from "sasdn";
 import {registerServices} from "./services/register";
 
 const debug = require('debug')('SASDN:Application');
-const app = new Application();
+const app = new RpcApplication();
 
 app.use(async function (ctx, next) {
     console.log('>> one');

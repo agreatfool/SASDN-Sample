@@ -1,8 +1,8 @@
 import {ServerDuplexStream} from "grpc";
-import {Context, Middleware, MiddlewareNext} from "sasdn";
+import {RpcContext, RpcMiddleware, MiddlewareNext} from "sasdn";
 import {GetBookRequest, Book} from "../../../proto/book_pb";
 
-export const getBooksHandler: Middleware = async (ctx: Context, next: MiddlewareNext) => {
+export const getBooksHandler: RpcMiddleware = async (ctx: RpcContext, next: MiddlewareNext) => {
     let call: ServerDuplexStream = ctx.call as ServerDuplexStream;
 
     call.on('data', function (request: GetBookRequest) {

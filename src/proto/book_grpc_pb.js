@@ -16,15 +16,15 @@ function deserialize_com_book_Book(buffer_arg) {
   return book_pb.Book.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_com_book_EchoMessage(arg) {
-  if (!(arg instanceof book_pb.EchoMessage)) {
-    throw new Error('Expected argument of type com.book.EchoMessage');
+function serialize_com_book_BookMap(arg) {
+  if (!(arg instanceof book_pb.BookMap)) {
+    throw new Error('Expected argument of type com.book.BookMap');
   }
   return new Buffer(arg.serializeBinary());
 }
 
-function deserialize_com_book_EchoMessage(buffer_arg) {
-  return book_pb.EchoMessage.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_com_book_BookMap(buffer_arg) {
+  return book_pb.BookMap.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_com_book_GetBookRequest(arg) {
@@ -38,15 +38,26 @@ function deserialize_com_book_GetBookRequest(buffer_arg) {
   return book_pb.GetBookRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_com_book_GetBookViaAuthor(arg) {
-  if (!(arg instanceof book_pb.GetBookViaAuthor)) {
-    throw new Error('Expected argument of type com.book.GetBookViaAuthor');
+function serialize_com_book_GetBookViaAuthorRequest(arg) {
+  if (!(arg instanceof book_pb.GetBookViaAuthorRequest)) {
+    throw new Error('Expected argument of type com.book.GetBookViaAuthorRequest');
   }
   return new Buffer(arg.serializeBinary());
 }
 
-function deserialize_com_book_GetBookViaAuthor(buffer_arg) {
-  return book_pb.GetBookViaAuthor.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_com_book_GetBookViaAuthorRequest(buffer_arg) {
+  return book_pb.GetBookViaAuthorRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_com_book_UpdateBookRequest(arg) {
+  if (!(arg instanceof book_pb.UpdateBookRequest)) {
+    throw new Error('Expected argument of type com.book.UpdateBookRequest');
+  }
+  return new Buffer(arg.serializeBinary());
+}
+
+function deserialize_com_book_UpdateBookRequest(buffer_arg) {
+  return book_pb.UpdateBookRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 
@@ -66,10 +77,10 @@ var BookServiceService = exports.BookServiceService = {
     path: '/com.book.BookService/GetBooksViaAuthor',
     requestStream: false,
     responseStream: true,
-    requestType: book_pb.GetBookViaAuthor,
+    requestType: book_pb.GetBookViaAuthorRequest,
     responseType: book_pb.Book,
-    requestSerialize: serialize_com_book_GetBookViaAuthor,
-    requestDeserialize: deserialize_com_book_GetBookViaAuthor,
+    requestSerialize: serialize_com_book_GetBookViaAuthorRequest,
+    requestDeserialize: deserialize_com_book_GetBookViaAuthorRequest,
     responseSerialize: serialize_com_book_Book,
     responseDeserialize: deserialize_com_book_Book,
   },
@@ -98,9 +109,10 @@ var BookServiceService = exports.BookServiceService = {
 };
 
 exports.BookServiceClient = grpc.makeGenericClientConstructor(BookServiceService);
-var TestServiceService = exports.TestServiceService = {
-  test: {
-    path: '/com.book.TestService/Test',
+// gPRC-getway Test
+var BookApiServiceService = exports.BookApiServiceService = {
+  getBookApi: {
+    path: '/com.book.BookApiService/GetBookApi',
     requestStream: false,
     responseStream: false,
     requestType: book_pb.GetBookRequest,
@@ -110,21 +122,28 @@ var TestServiceService = exports.TestServiceService = {
     responseSerialize: serialize_com_book_Book,
     responseDeserialize: deserialize_com_book_Book,
   },
-};
-
-exports.TestServiceClient = grpc.makeGenericClientConstructor(TestServiceService);
-var EchoServiceService = exports.EchoServiceService = {
-  echo: {
-    path: '/com.book.EchoService/Echo',
+  getBooksViaAuthorApi: {
+    path: '/com.book.BookApiService/GetBooksViaAuthorApi',
     requestStream: false,
     responseStream: false,
-    requestType: book_pb.EchoMessage,
-    responseType: book_pb.EchoMessage,
-    requestSerialize: serialize_com_book_EchoMessage,
-    requestDeserialize: deserialize_com_book_EchoMessage,
-    responseSerialize: serialize_com_book_EchoMessage,
-    responseDeserialize: deserialize_com_book_EchoMessage,
+    requestType: book_pb.GetBookViaAuthorRequest,
+    responseType: book_pb.BookMap,
+    requestSerialize: serialize_com_book_GetBookViaAuthorRequest,
+    requestDeserialize: deserialize_com_book_GetBookViaAuthorRequest,
+    responseSerialize: serialize_com_book_BookMap,
+    responseDeserialize: deserialize_com_book_BookMap,
+  },
+  updateBooksApi: {
+    path: '/com.book.BookApiService/UpdateBooksApi',
+    requestStream: false,
+    responseStream: false,
+    requestType: book_pb.UpdateBookRequest,
+    responseType: book_pb.Book,
+    requestSerialize: serialize_com_book_UpdateBookRequest,
+    requestDeserialize: deserialize_com_book_UpdateBookRequest,
+    responseSerialize: serialize_com_book_Book,
+    responseDeserialize: deserialize_com_book_Book,
   },
 };
 
-exports.EchoServiceClient = grpc.makeGenericClientConstructor(EchoServiceService);
+exports.BookApiServiceClient = grpc.makeGenericClientConstructor(BookApiServiceService);
