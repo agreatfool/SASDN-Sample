@@ -26,10 +26,10 @@ interface IGetBooksViaAuthor {
     path: string; // "/com.book.BookService/GetBooksViaAuthor"
     requestStream: boolean; // false
     responseStream: boolean; // true
-    requestType: book_pb.GetBookViaAuthor,
+    requestType: book_pb.GetBookViaAuthorRequest,
     responseType: book_pb.Book,
-    requestSerialize: (arg: book_pb.GetBookViaAuthor) => Buffer;
-    requestDeserialize: (buffer: Uint8Array) => book_pb.GetBookViaAuthor;
+    requestSerialize: (arg: book_pb.GetBookViaAuthorRequest) => Buffer;
+    requestDeserialize: (buffer: Uint8Array) => book_pb.GetBookViaAuthorRequest;
     responseSerialize: (arg: book_pb.Book) => Buffer;
     responseDeserialize: (buffer: Uint8Array) => book_pb.Book;
 }
@@ -60,17 +60,19 @@ export const BookServiceService: IBookServiceService;
 export class BookServiceClient extends grpc.Client {
     constructor(address: string, credentials: any, options?: grpc.IClientOptions);
     getBook(request: book_pb.GetBookRequest, callback: (error: Error | null, response: book_pb.Book) => void): grpc.ClientUnaryCall;
-    getBooksViaAuthor(request: book_pb.GetBookViaAuthor): grpc.ClientReadableStream;
+    getBooksViaAuthor(request: book_pb.GetBookViaAuthorRequest): grpc.ClientReadableStream;
     getGreatestBook(callback: (error: Error | null, response: book_pb.Book) => void): grpc.ClientWritableStream;
     getBooks(): grpc.ClientDuplexStream;
 }
 
-interface ITestServiceService extends grpc.IMethodsMap {
-    test: ITest;
+interface IBookApiServiceService extends grpc.IMethodsMap {
+    getBookApi: IGetBookApi;
+    getBooksViaAuthorApi: IGetBooksViaAuthorApi;
+    updateBooksApi: IUpdateBooksApi;
 }
 
-interface ITest {
-    path: string; // "/com.book.TestService/Test"
+interface IGetBookApi {
+    path: string; // "/com.book.BookApiService/GetBookApi"
     requestStream: boolean; // false
     responseStream: boolean; // false
     requestType: book_pb.GetBookRequest,
@@ -80,31 +82,33 @@ interface ITest {
     responseSerialize: (arg: book_pb.Book) => Buffer;
     responseDeserialize: (buffer: Uint8Array) => book_pb.Book;
 }
-
-export const TestServiceService: ITestServiceService;
-export class TestServiceClient extends grpc.Client {
-    constructor(address: string, credentials: any, options?: grpc.IClientOptions);
-    test(request: book_pb.GetBookRequest, callback: (error: Error | null, response: book_pb.Book) => void): grpc.ClientUnaryCall;
-}
-
-interface IEchoServiceService extends grpc.IMethodsMap {
-    echo: IEcho;
-}
-
-interface IEcho {
-    path: string; // "/com.book.EchoService/Echo"
+interface IGetBooksViaAuthorApi {
+    path: string; // "/com.book.BookApiService/GetBooksViaAuthorApi"
     requestStream: boolean; // false
     responseStream: boolean; // false
-    requestType: book_pb.EchoMessage,
-    responseType: book_pb.EchoMessage,
-    requestSerialize: (arg: book_pb.EchoMessage) => Buffer;
-    requestDeserialize: (buffer: Uint8Array) => book_pb.EchoMessage;
-    responseSerialize: (arg: book_pb.EchoMessage) => Buffer;
-    responseDeserialize: (buffer: Uint8Array) => book_pb.EchoMessage;
+    requestType: book_pb.GetBookViaAuthorRequest,
+    responseType: book_pb.BookMap,
+    requestSerialize: (arg: book_pb.GetBookViaAuthorRequest) => Buffer;
+    requestDeserialize: (buffer: Uint8Array) => book_pb.GetBookViaAuthorRequest;
+    responseSerialize: (arg: book_pb.BookMap) => Buffer;
+    responseDeserialize: (buffer: Uint8Array) => book_pb.BookMap;
+}
+interface IUpdateBooksApi {
+    path: string; // "/com.book.BookApiService/UpdateBooksApi"
+    requestStream: boolean; // false
+    responseStream: boolean; // false
+    requestType: book_pb.UpdateBookRequest,
+    responseType: book_pb.Book,
+    requestSerialize: (arg: book_pb.UpdateBookRequest) => Buffer;
+    requestDeserialize: (buffer: Uint8Array) => book_pb.UpdateBookRequest;
+    responseSerialize: (arg: book_pb.Book) => Buffer;
+    responseDeserialize: (buffer: Uint8Array) => book_pb.Book;
 }
 
-export const EchoServiceService: IEchoServiceService;
-export class EchoServiceClient extends grpc.Client {
+export const BookApiServiceService: IBookApiServiceService;
+export class BookApiServiceClient extends grpc.Client {
     constructor(address: string, credentials: any, options?: grpc.IClientOptions);
-    echo(request: book_pb.EchoMessage, callback: (error: Error | null, response: book_pb.EchoMessage) => void): grpc.ClientUnaryCall;
+    getBookApi(request: book_pb.GetBookRequest, callback: (error: Error | null, response: book_pb.Book) => void): grpc.ClientUnaryCall;
+    getBooksViaAuthorApi(request: book_pb.GetBookViaAuthorRequest, callback: (error: Error | null, response: book_pb.BookMap) => void): grpc.ClientUnaryCall;
+    updateBooksApi(request: book_pb.UpdateBookRequest, callback: (error: Error | null, response: book_pb.Book) => void): grpc.ClientUnaryCall;
 }
