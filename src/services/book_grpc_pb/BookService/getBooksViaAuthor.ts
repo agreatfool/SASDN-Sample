@@ -1,10 +1,10 @@
 import {ServerWritableStream} from "grpc";
-import {RpcContext, Middleware, MiddlewareNext} from "sasdn";
-import {GetBookViaAuthor, Book} from "../../../proto/book_pb";
+import {RpcContext, RpcMiddleware, MiddlewareNext} from "sasdn";
+import {GetBookViaAuthorRequest, Book} from "../../../proto/book_pb";
 
-export const getBooksViaAuthorHandler: Middleware = async (ctx: RpcContext, next: MiddlewareNext) => {
+export const getBooksViaAuthorHandler: RpcMiddleware = async (ctx: RpcContext, next: MiddlewareNext) => {
     let call: ServerWritableStream = ctx.call as ServerWritableStream;
-    let request = call.request as GetBookViaAuthor;
+    let request = call.request as GetBookViaAuthorRequest;
 
     console.log('getBooksViaAuthor request:', request.toObject());
     for (let i = 1; i <= 10; i++) {
