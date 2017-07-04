@@ -30,4 +30,4 @@ class PostGetBooksViaAuthorApi extends GatewayApiBase {
     }
 }
 
-export default new PostGetBooksViaAuthorApi();
+export const api = new PostGetBooksViaAuthorApi();

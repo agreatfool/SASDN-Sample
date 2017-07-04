@@ -87,4 +87,4 @@ class PostUpdateBooksApi extends GatewayApiBase {
     }
 }
 
-export default new PostUpdateBooksApi();
+export const api = new PostUpdateBooksApi();
