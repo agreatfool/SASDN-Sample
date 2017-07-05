@@ -3,8 +3,10 @@ import {GatewayApiBase} from "sasdn";
 
 const API_PATHS = [
     '../router/BookApiService/postGetBookApi',
+    '../router/BookApiService/postGetBookUserApi',
     '../router/BookApiService/postGetBooksViaAuthorApi',
     '../router/BookApiService/postUpdateBooksApi',
+    '../router/UserApiService/postGetUserApi',
 ];
 
 export default class RouteLoader {

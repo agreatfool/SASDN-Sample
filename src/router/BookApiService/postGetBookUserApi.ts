@@ -1,22 +1,28 @@
 import {GatewayApiBase, GatewayContext, MiddlewareNext} from "sasdn";
-import {Book, GetBookRequest, } from "../../proto/bookPb/book_pb";
+import {Book, } from "../../proto/bookPb/book_pb";
+import {GetUserRequest, } from "../../proto/userPb/user_pb";
 
 interface RequestParams {
-    body: GetBookRequest.AsObject;
+    id: string;
+    body: GetUserRequest.AsObject;
 }
 
-class PostGetBookApi extends GatewayApiBase {
+class PostGetBookUserApi extends GatewayApiBase {
     constructor() {
         super();
         this.method = 'post';
-        this.uri = '/v1/getBook';
+        this.uri = '/v1/getBookUser/:id';
         this.type = 'application/json; charset=utf-8';
         this.schemaDefObj = {
+            id: {
+                type: 'string',
+                required: true,
+            },
             body: {
                 type: 'object',
                 required: true,
                 schema: {
-                    isbn: {
+                    id: {
                         type: 'string',
                         required: false,
                     },
@@ -30,4 +36,4 @@ class PostGetBookApi extends GatewayApiBase {
     }
 }
 
-export const api = new PostGetBookApi();
+export const api = new PostGetBookUserApi();

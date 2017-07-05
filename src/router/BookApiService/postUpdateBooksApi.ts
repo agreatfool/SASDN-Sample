@@ -1,9 +1,9 @@
 import {GatewayApiBase, GatewayContext, MiddlewareNext} from "sasdn";
-import {Book, UpdateBookRequest} from "../../proto/book_pb";
+import {Book, UpdateBookRequest, } from "../../proto/bookPb/book_pb";
 
 interface RequestParams {
     isbn: string;
-    body: UpdateBookRequest.AsObject
+    body: UpdateBookRequest.AsObject;
 }
 
 class PostUpdateBooksApi extends GatewayApiBase {
