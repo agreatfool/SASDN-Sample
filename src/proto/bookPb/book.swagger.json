@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "book.proto",
+    "title": "bookPb/book.proto",
     "version": "version not set"
   },
   "schemes": [
@@ -22,7 +22,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/bookBook"
+              "$ref": "#/definitions/booksPbBook"
             }
           }
         },
@@ -32,7 +32,40 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/bookGetBookRequest"
+              "$ref": "#/definitions/booksPbGetBookRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BookApiService"
+        ]
+      }
+    },
+    "/v1/getBookUser/{id}": {
+      "post": {
+        "operationId": "GetBookUserApi",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/booksPbBook"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/userPbGetUserRequest"
             }
           }
         ],
@@ -48,7 +81,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/bookBookMap"
+              "$ref": "#/definitions/booksPbBookMap"
             }
           }
         },
@@ -58,7 +91,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/bookGetBookViaAuthorRequest"
+              "$ref": "#/definitions/booksPbGetBookViaAuthorRequest"
             }
           }
         ],
@@ -74,7 +107,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/bookBook"
+              "$ref": "#/definitions/booksPbBook"
             }
           }
         },
@@ -90,7 +123,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/bookUpdateBookRequest"
+              "$ref": "#/definitions/booksPbUpdateBookRequest"
             }
           }
         ],
@@ -101,7 +134,7 @@
     }
   },
   "definitions": {
-    "bookBook": {
+    "booksPbBook": {
       "type": "object",
       "properties": {
         "isbn": {
@@ -115,12 +148,12 @@
           "type": "string"
         },
         "mainCategory": {
-          "$ref": "#/definitions/bookBookCategory"
+          "$ref": "#/definitions/booksPbBookCategory"
         },
         "categoryList": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/bookBookCategory"
+            "$ref": "#/definitions/booksPbBookCategory"
           }
         },
         "tags": {
@@ -132,7 +165,7 @@
         "mapBook": {
           "type": "object",
           "additionalProperties": {
-            "$ref": "#/definitions/bookBook"
+            "$ref": "#/definitions/booksPbBookCategory"
           }
         },
         "mapName": {
@@ -143,7 +176,7 @@
         }
       }
     },
-    "bookBookCategory": {
+    "booksPbBookCategory": {
       "type": "object",
       "properties": {
         "id": {
@@ -159,22 +192,22 @@
         }
       }
     },
-    "bookBookMap": {
+    "booksPbBookMap": {
       "type": "object",
       "properties": {
         "count": {
           "type": "string",
           "format": "int64"
         },
-        "list": {
+        "book": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/bookBook"
+            "$ref": "#/definitions/booksPbBook"
           }
         }
       }
     },
-    "bookGetBookRequest": {
+    "booksPbGetBookRequest": {
       "type": "object",
       "properties": {
         "isbn": {
@@ -183,7 +216,7 @@
         }
       }
     },
-    "bookGetBookViaAuthorRequest": {
+    "booksPbGetBookViaAuthorRequest": {
       "type": "object",
       "properties": {
         "author": {
@@ -191,14 +224,23 @@
         }
       }
     },
-    "bookUpdateBookRequest": {
+    "booksPbUpdateBookRequest": {
       "type": "object",
       "properties": {
         "isbn": {
           "type": "string"
         },
         "book": {
-          "$ref": "#/definitions/bookBook"
+          "$ref": "#/definitions/booksPbBook"
+        }
+      }
+    },
+    "userPbGetUserRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
         }
       }
     }

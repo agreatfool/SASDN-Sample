@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+
+package userPb;
+
+message User {
+    int64 id = 1;
+    string name = 2;
+}
+
+message GetUserRequest {
+    int64 id = 1;
+}
+
+service UserService {
+    rpc GetUser (GetUserRequest) returns (User) {}
+}
+
+// gPRC-getway Test
+service UserApiService {
+    rpc GetUserApi (GetUserRequest) returns (User) {
+        option (google.api.http) = {
+            post: "/v1/getUser/{id}"
+            body: "*"
+        };
+    }
+}

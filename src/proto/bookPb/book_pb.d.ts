@@ -1,7 +1,8 @@
-// package: com.book
-// file: book.proto
+// package: booksPb
+// file: bookPb/book.proto
 
 import * as jspb from "google-protobuf";
+import * as userPb_user_pb from "../userPb/user_pb";
 
 export class Book extends jspb.Message { 
     getIsbn(): number;
@@ -30,7 +31,7 @@ export class Book extends jspb.Message {
     addTags(value: string, index?: number): string;
 
 
-    getMapbookMap(): jspb.Map<string, Book>;
+    getMapbookMap(): jspb.Map<string, BookCategory>;
     clearMapbookMap(): void;
 
 
@@ -57,7 +58,7 @@ export namespace Book {
         categorylistList: Array<BookCategory>,
         tagsList: Array<string>,
 
-        mapbookMap: Array<[string, Book]>,
+        mapbookMap: Array<[string, BookCategory]>,
 
         mapnameMap: Array<[number, string]>,
     }
@@ -96,10 +97,10 @@ export class BookMap extends jspb.Message {
     getCount(): number;
     setCount(value: number): void;
 
-    clearListList(): void;
-    getListList(): Array<Book>;
-    setListList(value: Array<Book>): void;
-    addList(value?: Book, index?: number): Book;
+    clearBookList(): void;
+    getBookList(): Array<Book>;
+    setBookList(value: Array<Book>): void;
+    addBook(value?: Book, index?: number): Book;
 
 
     serializeBinary(): Uint8Array;
@@ -115,7 +116,7 @@ export class BookMap extends jspb.Message {
 export namespace BookMap {
     export type AsObject = {
         count: number,
-        listList: Array<Book>,
+        bookList: Array<Book>,
     }
 }
 
