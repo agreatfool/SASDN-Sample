@@ -1,0 +1,1 @@
+set DEBUG=SPM:* & node ./node_modules/sasdn-pm/build/bin/spm.js secret -s 1q2w3e4r

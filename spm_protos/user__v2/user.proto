@@ -2,7 +2,7 @@ syntax = "proto3";
 
 import "google/api/annotations.proto";
 
-package userPb;
+package user__v2;
 
 message User {
     int64 id = 1;
