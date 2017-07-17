@@ -1,1 +1,0 @@
-set DEBUG=SPM:* & node ./node_modules/sasdn-pm/build/bin/spm.js uninstall -n user

@@ -2,7 +2,7 @@
   "name": "demo",
   "version": "0.0.0",
   "dependencies": {
-    "userPb": "2.0.0",
+    "userPb": "1.0.0",
     "bookPb": "1.0.0"
   }
 }

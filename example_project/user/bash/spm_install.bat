@@ -1,1 +1,1 @@
-set DEBUG=SPM:* & node ./node_modules/sasdn-pm/build/bin/spm.js install -n user
+set DEBUG=SPM:* & node ./node_modules/sasdn-pm/build/bin/spm.js install
