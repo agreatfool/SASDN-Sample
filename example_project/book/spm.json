@@ -1,7 +1,7 @@
 {
-  "name": "user",
+  "name": "bookPb",
   "version": "1.0.0",
   "dependencies": {
-
+    "userPb": "1.0.0"
   }
 }

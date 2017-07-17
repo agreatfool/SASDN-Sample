@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 import "google/api/annotations.proto";
-import "user__v2/user.proto";
+import "userPb/user.proto";
 
 package booksPb;
 
@@ -70,7 +70,7 @@ service BookApiService {
         };
     }
 
-    rpc GetBookUserApi (user__v2.GetUserRequest) returns (Book) {
+    rpc GetBookUserApi (userPb.GetUserRequest) returns (Book) {
         option (google.api.http) = {
             post: "/v1/getBookUser/{id}"
             body: "*"
