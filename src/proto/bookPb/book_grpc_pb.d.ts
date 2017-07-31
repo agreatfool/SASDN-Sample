@@ -1,4 +1,4 @@
-// package: booksPb
+// package: bookPb
 // file: bookPb/book.proto
 
 import * as grpc from "grpc";
@@ -13,7 +13,7 @@ interface IBookServiceService extends grpc.IMethodsMap {
 }
 
 interface IGetBook {
-    path: string; // "/booksPb.BookService/GetBook"
+    path: string; // "/bookPb.BookService/GetBook"
     requestStream: boolean; // false
     responseStream: boolean; // false
     requestType: bookPb_book_pb.GetBookRequest,
@@ -24,7 +24,7 @@ interface IGetBook {
     responseDeserialize: (buffer: Uint8Array) => bookPb_book_pb.Book;
 }
 interface IGetBooksViaAuthor {
-    path: string; // "/booksPb.BookService/GetBooksViaAuthor"
+    path: string; // "/bookPb.BookService/GetBooksViaAuthor"
     requestStream: boolean; // false
     responseStream: boolean; // true
     requestType: bookPb_book_pb.GetBookViaAuthorRequest,
@@ -35,7 +35,7 @@ interface IGetBooksViaAuthor {
     responseDeserialize: (buffer: Uint8Array) => bookPb_book_pb.Book;
 }
 interface IGetGreatestBook {
-    path: string; // "/booksPb.BookService/GetGreatestBook"
+    path: string; // "/bookPb.BookService/GetGreatestBook"
     requestStream: boolean; // true
     responseStream: boolean; // false
     requestType: bookPb_book_pb.GetBookRequest,
@@ -46,7 +46,7 @@ interface IGetGreatestBook {
     responseDeserialize: (buffer: Uint8Array) => bookPb_book_pb.Book;
 }
 interface IGetBooks {
-    path: string; // "/booksPb.BookService/GetBooks"
+    path: string; // "/bookPb.BookService/GetBooks"
     requestStream: boolean; // true
     responseStream: boolean; // true
     requestType: bookPb_book_pb.GetBookRequest,
@@ -74,7 +74,7 @@ interface IBookApiServiceService extends grpc.IMethodsMap {
 }
 
 interface IGetBookApi {
-    path: string; // "/booksPb.BookApiService/GetBookApi"
+    path: string; // "/bookPb.BookApiService/GetBookApi"
     requestStream: boolean; // false
     responseStream: boolean; // false
     requestType: bookPb_book_pb.GetBookRequest,
@@ -85,7 +85,7 @@ interface IGetBookApi {
     responseDeserialize: (buffer: Uint8Array) => bookPb_book_pb.Book;
 }
 interface IGetBooksViaAuthorApi {
-    path: string; // "/booksPb.BookApiService/GetBooksViaAuthorApi"
+    path: string; // "/bookPb.BookApiService/GetBooksViaAuthorApi"
     requestStream: boolean; // false
     responseStream: boolean; // false
     requestType: bookPb_book_pb.GetBookViaAuthorRequest,
@@ -96,7 +96,7 @@ interface IGetBooksViaAuthorApi {
     responseDeserialize: (buffer: Uint8Array) => bookPb_book_pb.BookMap;
 }
 interface IUpdateBooksApi {
-    path: string; // "/booksPb.BookApiService/UpdateBooksApi"
+    path: string; // "/bookPb.BookApiService/UpdateBooksApi"
     requestStream: boolean; // false
     responseStream: boolean; // false
     requestType: bookPb_book_pb.UpdateBookRequest,
@@ -107,7 +107,7 @@ interface IUpdateBooksApi {
     responseDeserialize: (buffer: Uint8Array) => bookPb_book_pb.Book;
 }
 interface IGetBookUserApi {
-    path: string; // "/booksPb.BookApiService/GetBookUserApi"
+    path: string; // "/bookPb.BookApiService/GetBookUserApi"
     requestStream: boolean; // false
     responseStream: boolean; // false
     requestType: userPb_user_pb.GetUserRequest,

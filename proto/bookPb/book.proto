@@ -3,7 +3,7 @@ syntax = "proto3";
 import "google/api/annotations.proto";
 import "userPb/user.proto";
 
-package booksPb;
+package bookPb;
 
 message Book {
     int64 isbn = 1;

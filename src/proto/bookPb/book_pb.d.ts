@@ -1,4 +1,4 @@
-// package: booksPb
+// package: bookPb
 // file: bookPb/book.proto
 
 import * as jspb from "google-protobuf";

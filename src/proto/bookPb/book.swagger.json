@@ -22,7 +22,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/booksPbBook"
+              "$ref": "#/definitions/bookPbBook"
             }
           }
         },
@@ -32,7 +32,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/booksPbGetBookRequest"
+              "$ref": "#/definitions/bookPbGetBookRequest"
             }
           }
         ],
@@ -48,7 +48,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/booksPbBook"
+              "$ref": "#/definitions/bookPbBook"
             }
           }
         },
@@ -81,7 +81,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/booksPbBookMap"
+              "$ref": "#/definitions/bookPbBookMap"
             }
           }
         },
@@ -91,7 +91,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/booksPbGetBookViaAuthorRequest"
+              "$ref": "#/definitions/bookPbGetBookViaAuthorRequest"
             }
           }
         ],
@@ -107,7 +107,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/booksPbBook"
+              "$ref": "#/definitions/bookPbBook"
             }
           }
         },
@@ -123,7 +123,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/booksPbUpdateBookRequest"
+              "$ref": "#/definitions/bookPbUpdateBookRequest"
             }
           }
         ],
@@ -134,7 +134,7 @@
     }
   },
   "definitions": {
-    "booksPbBook": {
+    "bookPbBook": {
       "type": "object",
       "properties": {
         "isbn": {
@@ -148,12 +148,12 @@
           "type": "string"
         },
         "mainCategory": {
-          "$ref": "#/definitions/booksPbBookCategory"
+          "$ref": "#/definitions/bookPbBookCategory"
         },
         "categoryList": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/booksPbBookCategory"
+            "$ref": "#/definitions/bookPbBookCategory"
           }
         },
         "tags": {
@@ -165,7 +165,7 @@
         "mapBook": {
           "type": "object",
           "additionalProperties": {
-            "$ref": "#/definitions/booksPbBookCategory"
+            "$ref": "#/definitions/bookPbBookCategory"
           }
         },
         "mapName": {
@@ -176,7 +176,7 @@
         }
       }
     },
-    "booksPbBookCategory": {
+    "bookPbBookCategory": {
       "type": "object",
       "properties": {
         "id": {
@@ -192,7 +192,7 @@
         }
       }
     },
-    "booksPbBookMap": {
+    "bookPbBookMap": {
       "type": "object",
       "properties": {
         "count": {
@@ -202,12 +202,12 @@
         "book": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/booksPbBook"
+            "$ref": "#/definitions/bookPbBook"
           }
         }
       }
     },
-    "booksPbGetBookRequest": {
+    "bookPbGetBookRequest": {
       "type": "object",
       "properties": {
         "isbn": {
@@ -216,7 +216,7 @@
         }
       }
     },
-    "booksPbGetBookViaAuthorRequest": {
+    "bookPbGetBookViaAuthorRequest": {
       "type": "object",
       "properties": {
         "author": {
@@ -224,14 +224,14 @@
         }
       }
     },
-    "booksPbUpdateBookRequest": {
+    "bookPbUpdateBookRequest": {
       "type": "object",
       "properties": {
         "isbn": {
           "type": "string"
         },
         "book": {
-          "$ref": "#/definitions/booksPbBook"
+          "$ref": "#/definitions/bookPbBook"
         }
       }
     },
