@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "book.proto",
+    "title": "userPb/user.proto",
     "version": "version not set"
   },
   "schemes": [
@@ -15,53 +15,58 @@
     "application/json"
   ],
   "paths": {
-    "/v1/echo": {
+    "/v1/getUser/{id}": {
       "post": {
-        "operationId": "Echo",
+        "operationId": "GetUserApi",
         "responses": {
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/bookEchoMessage"
+              "$ref": "#/definitions/userPbUser"
             }
           }
         },
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
             "name": "body",
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/bookEchoMessage"
+              "$ref": "#/definitions/userPbGetUserRequest"
             }
           }
         ],
         "tags": [
-          "EchoService"
+          "UserApiService"
         ]
       }
     }
   },
   "definitions": {
-    "bookBook": {
+    "userPbGetUserRequest": {
       "type": "object",
       "properties": {
-        "isbn": {
+        "id": {
           "type": "string",
           "format": "int64"
-        },
-        "title": {
-          "type": "string"
-        },
-        "author": {
-          "type": "string"
         }
       }
     },
-    "bookEchoMessage": {
+    "userPbUser": {
       "type": "object",
       "properties": {
-        "value": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "name": {
           "type": "string"
         }
       }
