@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-import "google/api/annotations.proto";
+import "lib3rd/google/api/annotations.proto";
 
 package userPb;
 
