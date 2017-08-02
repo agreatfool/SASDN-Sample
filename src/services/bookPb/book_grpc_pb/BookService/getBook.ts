@@ -7,7 +7,13 @@ export const getBookHandler: RpcMiddleware = async (ctx: RpcContext, next: Middl
     let callback: RpcImplCallback = ctx.callback;
     let request = call.request as GetBookRequest;
 
-    await next();
+    console.log('getBook request:', request.toObject());
+    let reply = new Book();
+    reply.setTitle('DefaultBook');
+    reply.setAuthor('DefaultAuthor');
+    reply.setIsbn(request.getIsbn());
+    console.log('getBook done:', reply.toObject());
+    callback(null, reply);
 
     return Promise.resolve();
 };
