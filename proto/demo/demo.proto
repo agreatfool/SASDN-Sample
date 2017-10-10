@@ -10,7 +10,7 @@ message Demo {
     string name = 2;
     DemoCategory category = 3;
     repeated string tags = 4;
-    repeated DemoItem item_list = 5;
+    repeated DemoItem items = 5;
     map<int64, string> writers = 6;
     map<string, order.Order> orders = 7;
 }
@@ -27,11 +27,11 @@ message DemoCategory {
 }
 
 message GetDemoRequest {
-    int64 isbn = 1;
+    int64 id = 1;
 }
 
 message GetDemoViaNameRequest {
-    string author = 1;
+    string name = 1;
 }
 
 message GetDemoOrderRequest {
@@ -40,9 +40,9 @@ message GetDemoOrderRequest {
 
 service DemoService {
     rpc GetDemo (GetDemoRequest) returns (Demo) {}
-    rpc GetBooksViaAuthor (GetDemoViaNameRequest) returns (stream Demo) {}
-    rpc GetGreatestBook (stream GetDemoRequest) returns (Demo) {}
-    rpc GetBooks (stream GetDemoRequest) returns (stream Demo) {}
+    rpc GetDemoViaName (GetDemoViaNameRequest) returns (stream Demo) {}
+    rpc GetStreamDemo (stream GetDemoRequest) returns (Demo) {}
+    rpc GetStreamDemos (stream GetDemoRequest) returns (stream Demo) {}
 }
 
 // gPRC-getway Test
