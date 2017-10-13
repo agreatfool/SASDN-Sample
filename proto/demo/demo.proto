@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "order/order.proto";
+
+package demo;
+
+message Demo {
+    int64 id = 1;
+    string name = 2;
+    DemoCategory category = 3;
+    repeated string tags = 4;
+    repeated DemoItem items = 5;
+    map<int64, string> writers = 6;
+    map<string, order.Order> orders = 7;
+}
+
+message DemoItem {
+    int64 id = 1;
+    string name = 2;
+}
+
+message DemoCategory {
+    int64 id = 1;
+    string name = 2;
+    bool parent_node = 3;
+}
+
+message GetDemoRequest {
+    int64 id = 1;
+}
+
+message GetDemoViaNameRequest {
+    string name = 1;
+}
+
+message GetDemoOrderRequest {
+    int64 order_id = 1;
+}
+
+service DemoService {
+    rpc GetDemo (GetDemoRequest) returns (Demo) {}
+    rpc GetDemoViaName (GetDemoViaNameRequest) returns (stream Demo) {}
+    rpc GetStreamDemo (stream GetDemoRequest) returns (Demo) {}
+    rpc GetStreamDemos (stream GetDemoRequest) returns (stream Demo) {}
+}
+
+// gPRC-getway Test
+service DemoApiService {
+    rpc GetDemoOrderApi (GetDemoOrderRequest) returns (order.Order) {
+        option (google.api.http) = {
+            post: "/v1/getDemoOrder"
+            body: "*"
+        };
+    }
+}
